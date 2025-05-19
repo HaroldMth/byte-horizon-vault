@@ -1,3 +1,4 @@
+
 import { FileItem, UploadResponse } from '@/types';
 import { supabase } from "@/integrations/supabase/client";
 import { v4 as uuidv4 } from 'uuid';
@@ -99,5 +100,56 @@ export const incrementDownloadCount = async (fileId: string): Promise<void> => {
     }
   } catch (error) {
     console.error('Error incrementing download count:', error);
+  }
+};
+
+// Add a text file to DB
+export const addTextFile = async (title: string, content: string): Promise<{ id: string } | null> => {
+  try {
+    const fileId = uuidv4();
+    const blob = new Blob([content], { type: 'text/plain' });
+    const file = new File([blob], `${title}.txt`, { type: 'text/plain' });
+    
+    // Upload file to Supabase Storage
+    const { error: uploadError } = await supabase.storage
+      .from('files')
+      .upload(`${fileId}/${file.name}`, file);
+      
+    if (uploadError) throw uploadError;
+    
+    // Create metadata entry in the database
+    const { error: metaError } = await supabase
+      .from('files_meta')
+      .insert({
+        id: fileId,
+        filename: file.name,
+        mimetype: 'text/plain',
+        size: blob.size,
+        downloads: 0
+      });
+      
+    if (metaError) throw metaError;
+    
+    return { id: fileId };
+  } catch (error) {
+    console.error('Error adding text file:', error);
+    return null;
+  }
+};
+
+// Test API call
+export const testApiCall = async (): Promise<{ message: string, timestamp: string } | null> => {
+  try {
+    // Simulate API call delay
+    await new Promise(resolve => setTimeout(resolve, 500));
+    
+    // Return mock response
+    return {
+      message: "API test successful",
+      timestamp: new Date().toISOString()
+    };
+  } catch (error) {
+    console.error('Error in test API call:', error);
+    return null;
   }
 };

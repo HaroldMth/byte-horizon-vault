@@ -1,10 +1,9 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import MainLayout from '@/components/Layout/MainLayout';
 import { Button } from '@/components/ui/button';
 import FeatureCard from '@/components/UI/FeatureCard';
-import { Upload, Clock, Lock, Zap } from 'lucide-react';
+import { Upload, Clock, Lock, Zap, FileCode } from 'lucide-react';
 
 const Home = () => {
   return (
@@ -27,6 +26,12 @@ const Home = () => {
                 </Button>
                 <Button asChild variant="outline" className="border-byte-purple text-white px-8 py-6">
                   <Link to="/dashboard">Browse Files</Link>
+                </Button>
+                <Button asChild variant="secondary" className="px-8 py-6">
+                  <Link to="/api-docs">
+                    <FileCode className="mr-2" />
+                    API Documentation
+                  </Link>
                 </Button>
               </div>
             </div>
@@ -93,9 +98,14 @@ const Home = () => {
             <p className="text-gray-300 mb-8">
               No registration required. Just upload and start sharing your files instantly.
             </p>
-            <Button asChild className="bg-gradient-to-r from-byte-purple to-byte-pink hover:opacity-90 text-white px-8 py-6">
-              <Link to="/upload">Upload Your First File</Link>
-            </Button>
+            <div className="flex flex-wrap justify-center gap-4">
+              <Button asChild className="bg-gradient-to-r from-byte-purple to-byte-pink hover:opacity-90 text-white px-8 py-6">
+                <Link to="/upload">Upload Your First File</Link>
+              </Button>
+              <Button asChild variant="outline" className="border-byte-purple text-white px-8 py-6">
+                <Link to="/api-docs">View API Docs</Link>
+              </Button>
+            </div>
           </div>
         </div>
       </section>
