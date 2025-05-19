@@ -8,6 +8,7 @@ import Home from "./pages/Home";
 import Upload from "./pages/Upload";
 import Dashboard from "./pages/Dashboard";
 import FileDetails from "./pages/FileDetails";
+import ApiDocs from "./pages/ApiDocs";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -23,6 +24,7 @@ const App = () => (
           <Route path="/upload" element={<Upload />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/file/:fileId" element={<FileDetails />} />
+          <Route path="/api-docs" element={<ApiDocs />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

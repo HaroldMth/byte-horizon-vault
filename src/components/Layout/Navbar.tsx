@@ -2,7 +2,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { Home, Upload, LayoutDashboard } from 'lucide-react';
+import { Home, Upload, LayoutDashboard, FileCode } from 'lucide-react';
 
 const Navbar = () => {
   return (
@@ -19,6 +19,7 @@ const Navbar = () => {
           <Link to="/" className="text-gray-300 hover:text-white transition-colors">Home</Link>
           <Link to="/upload" className="text-gray-300 hover:text-white transition-colors">Upload</Link>
           <Link to="/dashboard" className="text-gray-300 hover:text-white transition-colors">Dashboard</Link>
+          <Link to="/api-docs" className="text-gray-300 hover:text-white transition-colors">API Docs</Link>
         </div>
         
         <div className="flex items-center gap-2">
@@ -37,6 +38,9 @@ const Navbar = () => {
             </Link>
             <Link to="/dashboard" className="text-gray-300 hover:text-white">
               <LayoutDashboard size={20} />
+            </Link>
+            <Link to="/api-docs" className="text-gray-300 hover:text-white">
+              <FileCode size={20} />
             </Link>
           </div>
         </div>
