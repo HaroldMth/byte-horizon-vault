@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -61,6 +62,14 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
+				},
+				// Custom futuristic color palette
+				byte: {
+					darkblue: '#0A1128',
+					blue: '#1282A2',
+					purple: '#9B87F5',
+					pink: '#D946EF',
+					red: '#EA384C',
 				}
 			},
 			borderRadius: {
@@ -70,25 +79,37 @@ export default {
 			},
 			keyframes: {
 				'accordion-down': {
-					from: {
-						height: '0'
-					},
-					to: {
-						height: 'var(--radix-accordion-content-height)'
-					}
+					from: { height: '0' },
+					to: { height: 'var(--radix-accordion-content-height)' }
 				},
 				'accordion-up': {
-					from: {
-						height: 'var(--radix-accordion-content-height)'
-					},
-					to: {
-						height: '0'
-					}
+					from: { height: 'var(--radix-accordion-content-height)' },
+					to: { height: '0' }
+				},
+				pulse: {
+					'0%, 100%': { opacity: '1' },
+					'50%': { opacity: '0.5' }
+				},
+				float: {
+					'0%, 100%': { transform: 'translateY(0)' },
+					'50%': { transform: 'translateY(-10px)' }
+				},
+				glow: {
+					'0%, 100%': { boxShadow: '0 0 5px rgba(155, 135, 245, 0.5)' },
+					'50%': { boxShadow: '0 0 20px rgba(155, 135, 245, 0.8)' }
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				pulse: 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+				float: 'float 6s ease-in-out infinite',
+				glow: 'glow 1.5s ease-in-out infinite'
+			},
+			backgroundImage: {
+				'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+				'cyber-gradient': 'linear-gradient(90deg, #0A1128 0%, #1282A2 100%)',
+				'neon-gradient': 'linear-gradient(90deg, #9B87F5 0%, #D946EF 100%)'
 			}
 		}
 	},
